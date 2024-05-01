@@ -9,6 +9,14 @@ class User(db.Model):
     salt = db.Column(db.String(36), unique=False, nullable=False)
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
 
+    def __init__(self, email, password, salt):
+        self.email = email
+        self.password = password
+        self.salt = salt
+
+    
+    
+
     def __repr__(self):
         return f'<User {self.email}>'
 
