@@ -36,6 +36,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 				else return false;
 			},
+			register: async (user) => {
+				// const resp = await fetch(process.env.BACKEND_URL + "/api/login", {
+				// 	method: "POST", // *GET, POST, PUT, DELETE, etc.
+				// 	headers: {
+				// 		"Content-Type": "application/json",
+				// 		// 'Content-Type': 'application/x-www-form-urlencoded',
+				// 	},
+				// 	body: JSON.stringify(user), // body data type must match "Content-Type" header)
+				// })
+				// const data = await resp.json()
+				// if (resp.ok) {
+				// 	localStorage.setItem('token', data.access_token)
+				// 	setStore({ token: data.access_token })
+				// 	return true;
+				// }
+				// else return false;
+				console.log(user);
+			},
 			getProfile: async (user) => {
 				const store = getStore();
 				const resp = await fetch(process.env.BACKEND_URL + "/api/protected", {
@@ -50,8 +68,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					setStore({ profile: data })
 				}
 			},
-			logout : () => {
-				setStore({profile : null, token : null})
+			logout: () => {
+				setStore({ profile: null, token: null })
 				localStorage.removeItem('token')
 			}
 		}

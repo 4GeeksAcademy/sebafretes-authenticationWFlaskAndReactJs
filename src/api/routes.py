@@ -8,6 +8,7 @@ from flask_cors import CORS
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
+import bcrypt
 
 api = Blueprint('api', __name__)
 
@@ -22,6 +23,18 @@ def handle_hello():
     }
 
     return jsonify(response_body), 200
+
+#register
+@api.route('/register', methods=['POST'])
+def sign_up():
+    email = request.json.get('email', None)
+    password = request.json.get('password', None)
+
+    if email == None or password == None: return jsonify({'msg': 'Wrong email or password'}), 401
+
+    hashed_password = ''
+
+    user= User(email=email, password=hashed_password)
 
 # Create a route to authenticate your users and return JWTs. The
 # create_access_token() function is used to actually generate the JWT.

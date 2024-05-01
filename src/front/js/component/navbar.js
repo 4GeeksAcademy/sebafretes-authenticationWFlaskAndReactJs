@@ -14,10 +14,13 @@ export const Navbar = () => {
 					<span className="navbar-brand mb-0 h1">React Boilerplate</span>
 				</Link>
 				<div className="ml-auto">
+					<Link to="/register">
+						<button className="btn btn-primary">Register</button>
+					</Link>
 					{
 						!store.token &&
 						<Link to="/login">
-							<button className="btn btn-primary">Login</button>
+							<button className="btn btn-primary ms-4">Login</button>
 						</Link>
 					}
 					{
